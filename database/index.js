@@ -27,7 +27,7 @@ let mongoSave = (data, callback) => {
 
 }
 
-let mongoQuery = (callback) => {
+let mongoQuery = (name, callback) => {
   // This function should save a repo or repos to
   // the MongoDB
 
@@ -35,7 +35,7 @@ let mongoQuery = (callback) => {
   //   callback(data);
   // });
 
-  var query = Repo.find({}).sort({ forks: 'desc'}).limit(15)
+  let query = Repo.find({username:name}).sort({ forks: 'desc'}).limit(15)
 query.exec(function (err, docs) {
   callback(docs)
 });
