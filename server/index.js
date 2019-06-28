@@ -9,7 +9,8 @@ app.listen(port, function() {
   console.log(`listening on port ${port}`);
 });
 
-// var Model = require('../helpers/github.js');
+var githubHelper = require('../helpers/github.js');
+
 
 app.post('/repos', function (req, res) {
   // TODO - your code here!
@@ -17,11 +18,7 @@ app.post('/repos', function (req, res) {
   // and get the repo information from the github API, then
   // save the repo information in the database
 
-  // Model.save(req.body, (err) => {
-  //   if (err) res.send('not okay')
-     res.send(req.body)
-  // })
-  //console.log(req.body)
+  githubHelper.getReposByUsername(req.body.username, function(apiResponse){console.log(apiResponse)})
 });
 
 app.get('/repos', function (req, res) {
