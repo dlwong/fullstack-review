@@ -15,6 +15,18 @@ class App extends React.Component {
 
   }
 
+  componentDidMount(){
+    axios.get('/repos', {
+    })
+    .then((response) => {
+      this.setState({repos: response.data})
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+
   search (term) {
     //console.log(`${term} was searched`);
     // $.ajax({
@@ -38,6 +50,9 @@ class App extends React.Component {
     });
 
   }
+
+
+
 
   render () {
     return (<div>

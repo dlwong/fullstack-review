@@ -27,8 +27,22 @@ let mongoSave = (data, callback) => {
 
 }
 
+let mongoQuery = (callback) => {
+  // This function should save a repo or repos to
+  // the MongoDB
 
+  // Repo.find({}, (err, data) => {
+  //   callback(data);
+  // });
+
+  var query = Repo.find({}).sort({ forks: 'desc'}).limit(15)
+query.exec(function (err, docs) {
+  callback(docs)
+});
+
+}
 
 //var db = mongoose.connection;
 
 module.exports.save = mongoSave;
+module.exports.query = mongoQuery;
