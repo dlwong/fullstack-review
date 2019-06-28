@@ -20,7 +20,7 @@ let getReposByUsername = (username, callback) => {
     if (!error && response.statusCode == 200) {
       var info = JSON.parse(body);
       var repoURL = info.map(x => {
-          return {url:x.url,forks:x.forks_count}
+          return {username:x.owner.login, url:x.url,forks:x.forks_count}
       })
       callback(repoURL);
     }

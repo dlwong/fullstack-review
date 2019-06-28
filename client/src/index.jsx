@@ -21,7 +21,7 @@ class App extends React.Component {
       context: this,
       data: JSON.stringify({username: term}),
       contentType: 'application/json',
-      success: () => {
+      success: (data) => {
         console.log(data)
       }
     })
