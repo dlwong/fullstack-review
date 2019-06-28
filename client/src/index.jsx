@@ -4,6 +4,8 @@ import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
 
+const axios = require('axios');
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,16 +17,26 @@ class App extends React.Component {
 
   search (term) {
     //console.log(`${term} was searched`);
-    $.ajax({
-      method: 'POST',
-      url: '/repos',
-      context: this,
-      data: JSON.stringify({username: term}),
-      contentType: 'application/json',
-      success: (data) => {
-        console.log(data)
-      }
+    // $.ajax({
+    //   method: 'POST',
+    //   url: '/repos',
+    //   context: this,
+    //   data: JSON.stringify({username: term}),
+    //   contentType: 'application/json',
+    //   success: (data) => {
+    //     console.log(data)
+    //   }
+    // })
+
+    axios.post('/repos', {
     })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
   }
 
   render () {

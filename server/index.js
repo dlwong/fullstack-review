@@ -18,9 +18,8 @@ app.post('/repos', function (req, res) {
   // save the repo information in the database
 
 
-
-  githubHelper.getReposByUsername(req.body.username, function(apiResponse) {
-    db.save(apiResponse, ()=>res.send('done'))})
+   githubHelper.getReposByUsername(req.body.username, function(apiResponse) {
+     db.save(apiResponse, () => res.send('done'))})
 
 
 });
