@@ -19,9 +19,9 @@ app.post('/repos', function (req, res) {
 
   // Model.save(req.body, (err) => {
   //   if (err) res.send('not okay')
-  //   res.send('okay')
+     res.send(req.body)
   // })
-  console.log(req.body)
+  //console.log(req.body)
 });
 
 app.get('/repos', function (req, res) {

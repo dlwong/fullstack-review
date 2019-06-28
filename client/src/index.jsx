@@ -14,7 +14,7 @@ class App extends React.Component {
   }
 
   search (term) {
-    console.log(`${term} was searched`);
+    //console.log(`${term} was searched`);
     $.ajax({
       method: 'POST',
       url: '/repos',
@@ -22,7 +22,7 @@ class App extends React.Component {
       data: JSON.stringify({username: term}),
       contentType: 'application/json',
       success: () => {
-        console.log('it worked')
+        console.log(data)
       }
     })
   }
