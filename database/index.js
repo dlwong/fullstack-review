@@ -22,12 +22,11 @@ let Repo = mongoose.model('Repo', repoSchema);
 let mongoSave = (data, callback) => {
   // This function should save a repo or repos to
   // the MongoDB
-
   Repo.insertMany(data, callback) ;
 
 }
 
-let mongoQuery = (name, callback) => {
+let mongoQuery = (callback) => {
   // This function should save a repo or repos to
   // the MongoDB
 
@@ -35,7 +34,7 @@ let mongoQuery = (name, callback) => {
   //   callback(data);
   // });
 
-  let query = Repo.find({username:name}).sort({ forks: 'desc'}).limit(15)
+  let query = Repo.find({}).sort({ forks: 'desc'}).limit(25)
 query.exec(function (err, docs) {
   callback(docs)
 });

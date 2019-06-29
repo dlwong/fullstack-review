@@ -17,7 +17,6 @@ app.post('/repos', function (req, res) {
   // and get the repo information from the github API, then
   // save the repo information in the database
 
-
    githubHelper.getReposByUsername(req.body.username, function(apiResponse) {
      db.save(apiResponse, () => res.send('done'))})
 
@@ -27,7 +26,7 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // TODO - your code here!
   // This route should send back the top 25 repos
-  db.query(req.body.username, (data) => res.send(data));
+  db.query((data) => res.send(data));
 
 });
 
