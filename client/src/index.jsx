@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
-
-const axios = require('axios');
+import axios from 'axios';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,35 +10,24 @@ class App extends React.Component {
     this.state = {
       repos: []
     }
-
   }
 
   componentDidMount(){
     axios.get('/repos', {
     })
-    .then((response) => {
-      this.setState({repos: response.data})
+    .then((response) => { //{repos}
+      this.setState({repos: response.data}) //this.setState({repos,})
     })
     .catch(function (error) {
       console.log(error);
     });
   }
 
-
   search (term) {
     console.log(`${term} was searched`);
-    // $.ajax({
-    //   method: 'POST',
-    //   url: '/repos',
-    //   context: this,
-    //   data: JSON.stringify({username: term}),
-    //   contentType: 'application/json',
-    //   success: (data) => {
-    //     console.log(data)
-    //   }
-    // })
 
     axios.post('/repos', {
+      username: term
     })
     .then(function (response) {
       console.log(response);
@@ -50,9 +37,6 @@ class App extends React.Component {
     });
 
   }
-
-
-
 
   render () {
     return (<div>
